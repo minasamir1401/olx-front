@@ -16,6 +16,11 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'olxnar-api.red-gate.tech',
+        pathname: '/uploads/**',
+      },
+      {
+        protocol: 'https',
         hostname: '**',
       },
       {
