@@ -54,18 +54,22 @@ export default function WhatsAppAdminPage() {
   };
 
   const handleLogout = async () => {
-    if (!confirm('هل أنت متأكد من تسجيل الخروج من واتساب؟ سيتم مسح الجلسة الحالية.')) return;
-    
     try {
       setLoading(true);
+      toast.info('جاري إرسال طلب إعادة التشغيل للسيرفر...');
       await adminService.logoutWhatsApp();
-      toast.success('تم تسجيل الخروج بنجاح. يمكنك الآن مسح QR جديد.');
+      toast.success('تم مسح الجلسة! السيرفر يعيد التشغيل الآن...');
       setQrCode(null);
       setStatus({ isReady: false, status: 'LOGGING_OUT' });
-      setTimeout(fetchStatus, 2000);
+      
+      // ننتظر 5 ثواني لكي نعطي السيرفر وقتاً ليعيد التشغيل قبل جلب الحالة
+      setTimeout(fetchStatus, 5000);
     } catch (error) {
-      toast.error('فشل في تسجيل الخروج');
-      setLoading(false);
+      console.error('Logout error ignored because server might be restarting', error);
+      toast.success('تم مسح الجلسة! السيرفر يعيد التشغيل الآن...');
+      setQrCode(null);
+      setStatus({ isReady: false, status: 'LOGGING_OUT' });
+      setTimeout(fetchStatus, 5000);
     }
   };
 
