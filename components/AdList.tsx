@@ -10,13 +10,23 @@ import { formatDistanceToNow } from 'date-fns';
 import { ar, enUS } from 'date-fns/locale';
 import { useLocale, useTranslations } from 'next-intl';
 
-export default function AdList() {
-  const [ads, setAds] = useState<Ad[]>([]);
-  const [loading, setLoading] = useState(true);
+interface AdListProps {
+  ads?: Ad[];
+}
+
+export default function AdList({ ads: initialAds }: AdListProps) {
+  const [ads, setAds] = useState<Ad[]>(initialAds || []);
+  const [loading, setLoading] = useState(!initialAds);
   const locale = useLocale();
   const t = useTranslations('ad');
 
   useEffect(() => {
+    if (initialAds) {
+      setAds(initialAds);
+      setLoading(false);
+      return;
+    }
+
     const fetchAds = async () => {
       try {
         setLoading(true);
@@ -31,7 +41,7 @@ export default function AdList() {
       }
     };
     fetchAds();
-  }, []);
+  }, [initialAds]);
 
   const dateLocale = locale === 'ar' ? ar : enUS;
 
