@@ -31,9 +31,7 @@ export default function AdList({ ads: initialAds }: AdListProps) {
       try {
         setLoading(true);
         const data = await adService.getAds();
-        // Duplicate ads multiple times to simulate having many products
-        const manyAds = Array(8).fill(data.ads).flat();
-        setAds(manyAds);
+        setAds(data.ads || []);
       } catch (error) {
         console.error('Failed to fetch ads', error);
       } finally {
@@ -72,7 +70,7 @@ export default function AdList({ ads: initialAds }: AdListProps) {
           <Card className="overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 bg-white group-hover:-translate-y-2 rounded-[2rem] relative">
             <div className="h-52 bg-slate-50 relative overflow-hidden flex items-center justify-center">
               {ad.images && ad.images.length > 0 ? (
-                <img src={`http://localhost:5000${ad.images[0].image_url}`} alt={ad.title} className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 p-2" />
+                <img src={ad.images[0].image_url?.startsWith('http') ? ad.images[0].image_url : `https://olxnar-api.red-gate.tech${ad.images[0].image_url}`} alt={ad.title} className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 p-2" />
               ) : (
                 <div className="w-full h-full flex flex-col items-center justify-center text-slate-300 bg-gradient-to-br from-slate-50 to-slate-100">
                   <span className="text-4xl mb-2">📸</span>

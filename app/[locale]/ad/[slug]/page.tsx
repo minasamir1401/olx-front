@@ -109,7 +109,7 @@ export default function AdDetailsPage() {
   }
 
   const images = ad.images || [];
-  const mainImage = images.length > 0 ? `http://localhost:5000${images[activeImageIndex].image_url}` : null;
+  const mainImage = images.length > 0 ? (images[activeImageIndex].image_url?.startsWith('http') ? images[activeImageIndex].image_url : `https://olxnar-api.red-gate.tech${images[activeImageIndex].image_url}`) : null;
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-7xl">
@@ -148,7 +148,7 @@ export default function AdDetailsPage() {
                     onClick={() => setActiveImageIndex(index)}
                     className={`relative w-24 h-24 rounded-2xl overflow-hidden border-4 transition-all shrink-0 snap-center ${activeImageIndex === index ? 'border-blue-600 scale-105 shadow-md' : 'border-transparent opacity-60 hover:opacity-100 hover:scale-105 bg-slate-100'}`}
                   >
-                    <img src={`http://localhost:5000${img.image_url}`} alt="" className="w-full h-full object-cover" />
+                    <img src={img.image_url?.startsWith('http') ? img.image_url : `https://olxnar-api.red-gate.tech${img.image_url}`} alt="" className="w-full h-full object-cover" />
                   </button>
                 ))}
               </div>

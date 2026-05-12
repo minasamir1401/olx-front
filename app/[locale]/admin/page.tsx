@@ -180,7 +180,7 @@ export default function AdminDashboard() {
                 <div key={ad.id} className="flex flex-col sm:flex-row items-center gap-6 p-6 rounded-3xl bg-slate-50 border border-slate-100 group">
                   <div className="w-full sm:w-24 h-40 sm:h-24 bg-slate-200 rounded-2xl shrink-0 overflow-hidden cursor-pointer" onClick={() => setSelectedAd(ad)}>
                     {ad.images?.[0] ? (
-                      <img src={`http://localhost:5000${ad.images[0].image_url}`} alt={ad.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
+                      <img src={ad.images[0].image_url?.startsWith('http') ? ad.images[0].image_url : `https://olxnar-api.red-gate.tech${ad.images[0].image_url}`} alt={ad.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
                     ) : (
                       <div className="w-full h-full bg-slate-200" />
                     )}
@@ -267,7 +267,7 @@ export default function AdminDashboard() {
               {selectedAd.images && selectedAd.images.length > 0 && (
                 <div className="flex gap-4 overflow-x-auto pb-4 snap-x">
                   {selectedAd.images.map((img: any, i: number) => (
-                    <img key={i} src={`http://localhost:5000${img.image_url}`} alt="" className="h-64 rounded-3xl object-cover snap-center border border-slate-100 shadow-sm" />
+                    <img key={i} src={img.image_url?.startsWith('http') ? img.image_url : `https://olxnar-api.red-gate.tech${img.image_url}`} alt="" className="h-64 rounded-3xl object-cover snap-center border border-slate-100 shadow-sm" />
                   ))}
                 </div>
               )}

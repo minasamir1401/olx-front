@@ -69,7 +69,7 @@ export default function Home() {
             key={activeHero?.id || 'default'}
             src={
               activeHero?.image_url
-                ? `http://localhost:5000${activeHero.image_url}`
+                ? (activeHero.image_url.startsWith('http') ? activeHero.image_url : `https://olxnar-api.red-gate.tech${activeHero.image_url}`)
                 : 'https://images.unsplash.com/photo-1555421689-491a97ff2040?q=80&w=2070&auto=format&fit=crop'
             }
             alt="Hero Background"

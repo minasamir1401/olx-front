@@ -104,7 +104,7 @@ export default function AdsAdmin() {
                     <div className="flex items-center gap-4">
                       <div className="w-16 h-16 bg-slate-100 rounded-xl overflow-hidden shrink-0">
                         {ad.images?.[0] ? (
-                          <img src={`http://localhost:5000${ad.images[0].image_url}`} className="w-full h-full object-cover" />
+                          <img src={ad.images[0].image_url?.startsWith('http') ? ad.images[0].image_url : `https://olxnar-api.red-gate.tech${ad.images[0].image_url}`} className="w-full h-full object-cover" />
                         ) : (
                           <LayoutList className="w-8 h-8 text-slate-300 m-4" />
                         )}

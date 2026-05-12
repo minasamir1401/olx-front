@@ -144,7 +144,7 @@ export default function HeroAdmin() {
               {heroes.map((hero) => (
                 <div key={hero.id} className="bg-white rounded-[2.5rem] overflow-hidden shadow-lg border border-slate-100 group relative">
                   <div className="h-48 bg-slate-200 relative">
-                    <img src={`http://localhost:5000${hero.image_url}`} className="w-full h-full object-cover" />
+                    <img src={hero.image_url?.startsWith('http') ? hero.image_url : `https://olxnar-api.red-gate.tech${hero.image_url}`} className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                       <Button onClick={() => handleDelete(hero.id)} variant="destructive" className="rounded-full w-12 h-12 p-0 shadow-xl">
                         <Trash2 className="w-6 h-6" />
