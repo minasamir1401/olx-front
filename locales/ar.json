@@ -1,0 +1,80 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "login": "دخول",
+    "logout": "خروج",
+    "post_ad": "بيع الآن",
+    "search_placeholder": "بتدور على إيه؟"
+  },
+  "hero": {
+    "title_part1": "مستقبل البيع والشراء",
+    "title_part2": "بين يديك الآن",
+    "subtitle": "انضم لأكبر تجمع للمشترين والبائعين في مصر. أمان، سرعة، ورفاهية في كل خطوة.",
+    "search_placeholder": "ما الذي تبحث عنه اليوم؟",
+    "search_location": "في كل المحافظات",
+    "search_button": "ابحث الآن"
+  },
+  "home": {
+    "categories": "تصفح الأقسام",
+    "latest": "أحدث الإعلانات",
+    "view_all": "عرض الكل",
+    "stats": {
+      "users": "مستخدم نشط",
+      "ads": "إعلان منشور",
+      "cities": "مدينة مغطاة"
+    }
+  },
+  "categories": {
+    "vehicles": "عربيات",
+    "real-estate": "عقارات",
+    "mobiles": "موبايلات",
+    "electronics": "إلكترونيات",
+    "furniture": "أثاث منزل",
+    "fashion": "أزياء",
+    "jobs": "وظائف",
+    "services": "خدمات"
+  },
+  "ad": {
+    "price": "ج.م",
+    "views": "مشاهدة",
+    "published": "نُشر",
+    "seller_info": "بيانات المعلن",
+    "member_since": "عضو منذ",
+    "show_phone": "إظهار رقم الموبايل",
+    "whatsapp": "واتساب",
+    "safety_tips": "نصائح للأمان",
+    "safety_tip1": "اتقابل في مكان عام وآمن",
+    "safety_tip2": "متدفعش أي فلوس مقدم",
+    "safety_tip3": "عاين الحاجة كويس قبل ما تدفع",
+    "description": "الوصف"
+  },
+  "auth": {
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب جديد",
+    "forgot_password": "نسيت كلمة السر؟",
+    "phone": "رقم الموبايل",
+    "password": "كلمة السر",
+    "full_name": "الاسم بالكامل",
+    "city": "المحافظة",
+    "otp": "كود التحقق",
+    "submit_login": "تسجيل الدخول",
+    "submit_register": "التالي (تأكيد الرقم)",
+    "submit_forgot": "إرسال كود التفعيل",
+    "submit_otp": "تأكيد الكود",
+    "welcome_back": "أهلاً بك مرة أخرى في أوليكس كلون",
+    "register_subtitle": "أكمل بياناتك لتبدأ البيع والشراء",
+    "no_account": "معندكش حساب؟",
+    "have_account": "عندك حساب بالفعل؟",
+    "back_to_login": "الرجوع لتسجيل الدخول"
+  },
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "welcome": "مرحباً بك يا {name}، إليك ملخص نشاط المنصة",
+    "stats": {
+      "total_users": "إجمالي المستخدمين",
+      "active_ads": "الإعلانات النشطة",
+      "pending_ads": "طلبات المراجعة",
+      "banned_users": "حسابات محظورة"
+    }
+  }
+}

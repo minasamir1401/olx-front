@@ -1,0 +1,80 @@
+{
+  "nav": {
+    "home": "Home",
+    "login": "Login",
+    "logout": "Logout",
+    "post_ad": "Post Now",
+    "search_placeholder": "What are you looking for?"
+  },
+  "hero": {
+    "title_part1": "The Future of Buying & Selling",
+    "title_part2": "In Your Hands Now",
+    "subtitle": "Join the largest community of buyers and sellers. Safety, speed, and luxury in every step.",
+    "search_placeholder": "What are you looking for today?",
+    "search_location": "In all governorates",
+    "search_button": "Search Now"
+  },
+  "home": {
+    "categories": "Browse Categories",
+    "latest": "Latest Ads",
+    "view_all": "View All",
+    "stats": {
+      "users": "Active User",
+      "ads": "Ad Posted",
+      "cities": "City Covered"
+    }
+  },
+  "categories": {
+    "vehicles": "Vehicles",
+    "real-estate": "Real Estate",
+    "mobiles": "Mobiles",
+    "electronics": "Electronics",
+    "furniture": "Furniture",
+    "fashion": "Fashion",
+    "jobs": "Jobs",
+    "services": "Services"
+  },
+  "ad": {
+    "price": "EGP",
+    "views": "views",
+    "published": "Published",
+    "seller_info": "Seller Info",
+    "member_since": "Member since",
+    "show_phone": "Show Phone Number",
+    "whatsapp": "WhatsApp",
+    "safety_tips": "Safety Tips",
+    "safety_tip1": "Meet in a safe public place",
+    "safety_tip2": "Don't pay any money upfront",
+    "safety_tip3": "Inspect the item well before paying",
+    "description": "Description"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Create New Account",
+    "forgot_password": "Forgot password?",
+    "phone": "Phone Number",
+    "password": "Password",
+    "full_name": "Full Name",
+    "city": "Governorate",
+    "otp": "Verification Code",
+    "submit_login": "Login",
+    "submit_register": "Next (Verify Number)",
+    "submit_forgot": "Send Activation Code",
+    "submit_otp": "Confirm Code",
+    "welcome_back": "Welcome back to OLX Clone",
+    "register_subtitle": "Complete your details to start buying and selling",
+    "no_account": "Don't have an account?",
+    "have_account": "Already have an account?",
+    "back_to_login": "Back to Login"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome {name}, here is your platform summary",
+    "stats": {
+      "total_users": "Total Users",
+      "active_ads": "Active Ads",
+      "pending_ads": "Review Requests",
+      "banned_users": "Banned Accounts"
+    }
+  }
+}
