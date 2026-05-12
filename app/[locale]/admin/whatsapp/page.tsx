@@ -163,16 +163,24 @@ export default function WhatsAppAdminPage() {
                 animate={{ opacity: 1 }}
                 className="py-10 text-center"
               >
-                <div className="bg-blue-50 text-blue-600 p-8 rounded-[2rem] flex flex-col items-center gap-4 border border-blue-100">
-                  <Loader2 className="w-16 h-16 animate-spin" />
-                  <div className="text-xl font-black">
-                    {status.status === 'INITIALIZING' ? 'جاري تشغيل المتصفح...' : 
-                     status.status === 'LOGGING_OUT' ? 'جاري مسح الجلسة...' : 
-                     status.status === 'WAITING_FOR_SCAN' ? 'جاري تجهيز الكود...' :
-                     'جاري الاتصال بالسيرفر...'}
+                {status.status.startsWith('ERROR') ? (
+                  <div className="bg-red-50 text-red-600 p-8 rounded-[2rem] flex flex-col items-center gap-4 border border-red-100">
+                    <AlertCircle className="w-16 h-16" />
+                    <div className="text-xl font-black">خطأ في السيرفر</div>
+                    <p className="text-sm font-bold opacity-80" dir="ltr">{status.status}</p>
                   </div>
-                  <p className="text-sm font-bold opacity-80">الحالة الحالية: {status.status}</p>
-                </div>
+                ) : (
+                  <div className="bg-blue-50 text-blue-600 p-8 rounded-[2rem] flex flex-col items-center gap-4 border border-blue-100">
+                    <Loader2 className="w-16 h-16 animate-spin" />
+                    <div className="text-xl font-black">
+                      {status.status === 'INITIALIZING' ? 'جاري تشغيل المتصفح...' : 
+                       status.status === 'LOGGING_OUT' ? 'جاري مسح الجلسة...' : 
+                       status.status === 'WAITING_FOR_SCAN' ? 'جاري تجهيز الكود...' :
+                       'جاري الاتصال بالسيرفر...'}
+                    </div>
+                    <p className="text-sm font-bold opacity-80">الحالة الحالية: {status.status}</p>
+                  </div>
+                )}
                 <button 
                   onClick={fetchStatus}
                   className="mt-8 flex items-center justify-center gap-2 w-full py-4 bg-slate-100 text-slate-600 rounded-2xl font-black hover:bg-slate-200 transition-all"
