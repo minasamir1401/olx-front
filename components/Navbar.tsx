@@ -39,6 +39,11 @@ export default function Navbar() {
           {/* Auth - Desktop only */}
           {isAuthenticated ? (
             <>
+              {user?.role === 'ADMIN' && (
+                <Link href="/admin" className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-blue-50 text-blue-600 rounded-xl hover:bg-blue-100 transition-all font-bold text-sm">
+                  لوحة التحكم
+                </Link>
+              )}
               <div className="hidden sm:flex items-center gap-2 cursor-pointer hover:bg-slate-50 px-2 py-1.5 rounded-lg transition-colors">
                 <UserCircle className="w-5 h-5 text-slate-600 shrink-0" />
                 <span className="font-bold text-slate-700 hidden lg:block text-sm truncate max-w-[100px]">{user?.name}</span>
