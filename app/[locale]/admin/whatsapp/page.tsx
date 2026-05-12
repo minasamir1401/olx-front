@@ -53,6 +53,22 @@ export default function WhatsAppAdminPage() {
     }
   };
 
+  const handleLogout = async () => {
+    if (!confirm('هل أنت متأكد من تسجيل الخروج من واتساب؟ سيتم مسح الجلسة الحالية.')) return;
+    
+    try {
+      setLoading(true);
+      await adminService.logoutWhatsApp();
+      toast.success('تم تسجيل الخروج بنجاح. يمكنك الآن مسح QR جديد.');
+      setQrCode(null);
+      setStatus({ isReady: false });
+      setTimeout(fetchStatus, 2000);
+    } catch (error) {
+      toast.error('فشل في تسجيل الخروج');
+      setLoading(false);
+    }
+  };
+
   if (!isHydrated) return null;
 
   return (
@@ -91,12 +107,20 @@ export default function WhatsAppAdminPage() {
                   <div className="text-xl font-black">الواتساب متصل بنجاح</div>
                   <p className="text-sm font-bold opacity-80">النظام جاهز لإرسال كود التحقق للمستخدمين</p>
                 </div>
-                <button 
-                  onClick={() => window.location.reload()}
-                  className="mt-8 flex items-center justify-center gap-2 w-full py-4 bg-slate-100 text-slate-600 rounded-2xl font-black hover:bg-slate-200 transition-all"
-                >
-                  <RefreshCw className="w-5 h-5" /> تحديث الحالة
-                </button>
+                <div className="flex flex-col gap-3 w-full mt-8">
+                  <button 
+                    onClick={() => window.location.reload()}
+                    className="flex items-center justify-center gap-2 w-full py-4 bg-slate-100 text-slate-600 rounded-2xl font-black hover:bg-slate-200 transition-all"
+                  >
+                    <RefreshCw className="w-5 h-5" /> تحديث الحالة
+                  </button>
+                  <button 
+                    onClick={handleLogout}
+                    className="flex items-center justify-center gap-2 w-full py-4 bg-red-50 text-red-600 rounded-2xl font-black hover:bg-red-100 transition-all border border-red-100"
+                  >
+                    تسجيل الخروج من واتساب
+                  </button>
+                </div>
               </motion.div>
             ) : qrCode ? (
               <motion.div 
@@ -116,8 +140,16 @@ export default function WhatsAppAdminPage() {
                     <p className="text-xs font-bold leading-relaxed">قم بفتح واتساب على هاتفك - الإعدادات - الأجهزة المرتبطة - ربط جهاز، ثم وجه الكاميرا نحو الشاشة.</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 text-slate-400 font-bold text-sm animate-pulse">
-                  <RefreshCw className="w-4 h-4" /> جاري انتظار المسح...
+                <div className="flex flex-col gap-3 w-full">
+                  <div className="flex items-center justify-center gap-2 text-slate-400 font-bold text-sm animate-pulse mb-2">
+                    <RefreshCw className="w-4 h-4" /> جاري انتظار المسح...
+                  </div>
+                  <button 
+                    onClick={handleLogout}
+                    className="flex items-center justify-center gap-2 w-full py-3 bg-slate-50 text-slate-500 rounded-xl font-bold hover:bg-slate-100 transition-all text-xs"
+                  >
+                    إعادة ضبط الجلسة
+                  </button>
                 </div>
               </motion.div>
             ) : (

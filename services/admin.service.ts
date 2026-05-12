@@ -34,5 +34,9 @@ export const adminService = {
   getWhatsAppQR: async () => {
     const response = await api.get('/admin/whatsapp/qr');
     return response.data;
+  },
+  logoutWhatsApp: async () => {
+    const response = await api.post('/admin/whatsapp/logout');
+    return response.data;
   }
 };
