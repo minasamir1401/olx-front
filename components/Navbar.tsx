@@ -7,7 +7,7 @@ import { UserCircle, PlusCircle, Search, LogOut } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import LanguageSwitcher from './LanguageSwitcher';
 
-export default function Navbar() {
+export default function Navbar({ locale }: { locale?: string }) {
   const { user, isAuthenticated, logout } = useAuthStore();
   const t = useTranslations('nav');
 
