@@ -14,7 +14,7 @@ export default function WhatsAppAdminPage() {
   const router = useRouter();
   
   const [qrCode, setQrCode] = useState<string | null>(null);
-  const [status, setStatus] = useState<{ isReady: boolean }>({ isReady: false });
+  const [status, setStatus] = useState<{ isReady: boolean, status: string }>({ isReady: false, status: 'OFFLINE' });
   const [loading, setLoading] = useState(true);
   const [isHydrated, setIsHydrated] = useState(false);
 
@@ -61,7 +61,7 @@ export default function WhatsAppAdminPage() {
       await adminService.logoutWhatsApp();
       toast.success('تم تسجيل الخروج بنجاح. يمكنك الآن مسح QR جديد.');
       setQrCode(null);
-      setStatus({ isReady: false });
+      setStatus({ isReady: false, status: 'LOGGING_OUT' });
       setTimeout(fetchStatus, 2000);
     } catch (error) {
       toast.error('فشل في تسجيل الخروج');
@@ -161,8 +161,13 @@ export default function WhatsAppAdminPage() {
               >
                 <div className="bg-blue-50 text-blue-600 p-8 rounded-[2rem] flex flex-col items-center gap-4 border border-blue-100">
                   <Loader2 className="w-16 h-16 animate-spin" />
-                  <div className="text-xl font-black">جاري توليد كود QR...</div>
-                  <p className="text-sm font-bold opacity-80">يرجى الانتظار ثواني، السيرفر يقوم بتجهيز جلسة جديدة.</p>
+                  <div className="text-xl font-black">
+                    {status.status === 'INITIALIZING' ? 'جاري تشغيل المتصفح...' : 
+                     status.status === 'LOGGING_OUT' ? 'جاري مسح الجلسة...' : 
+                     status.status === 'WAITING_FOR_SCAN' ? 'جاري تجهيز الكود...' :
+                     'جاري الاتصال بالسيرفر...'}
+                  </div>
+                  <p className="text-sm font-bold opacity-80">الحالة الحالية: {status.status}</p>
                 </div>
                 <button 
                   onClick={fetchStatus}
